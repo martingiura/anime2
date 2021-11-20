@@ -10,7 +10,7 @@ const putAnimes = async(req,res) => {
     // console.log(id)
     const { img } = req.body
 
-    const animeActualizado = await Anime.findByIdAndUpdate(animeEncontrado, {img}, {new:true})
+    const animeActualizado = await Anime.findByIdAndUpdate(id, {img}, {new:true})
     res.redirect('/animes')
 
 }
