@@ -1,17 +1,18 @@
-const Anime = require ('./../models/Anime')
+const Anime = require('./../models/Anime')
 
 const getAnimes = async(req, res) => {
-    const animes= await Anime.find({})
+    const animes = await Anime.find({})
     res.render('allAnimes', { animes })
 }
 
-const putAnimes = async(req,res) => {
+const putAnimes = async(req, res) => {
+    // Parametros de la url
     const {id} = req.params
-    // console.log(id)
+    // Datos del formulario body-parser
     const { img } = req.body
 
-    const animeActualizado = await Anime.findByIdAndUpdate(id, {img}, {new:true})
+    await Anime.findByIdAndUpdate(id, {img}, {new:true})
     res.redirect('/animes')
-
 }
+
 module.exports = { getAnimes, putAnimes }
